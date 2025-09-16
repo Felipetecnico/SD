@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clínica Veterinária - Atendimento</title>
+    <style>
+        body {
+            
+            font-family: Arial, sans-serif;
+        
+            width: 50%;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sistema de Atendimento Veterinário</h1>
+
+    <script>
+        // 1. Boas-vindas
+        const nomeTutor = prompt("Olá! Bem-vindo à nossa Clínica Veterinária! Qual é o seu nome?");
+        alert(`Seja bem-vindo, ${nomeTutor}! É um prazer te receber! `);
+
+        // 2. Verificação de idade
+        const idadeTutor = parseInt(prompt("Informe a sua idade:"));
+        if (idadeTutor >= 18) {
+            alert("Ótimo! Você é maior de idade e pode autorizar atendimentos.");
+        } else {
+            alert("Você é menor de idade. Será necessário um responsável maior de idade para autorizar atendimentos.");
+        }
+
+        // 3. Número par ou ímpar
+        const numeroSorte = parseInt(prompt("Digite seu número da sorte:"));
+        if (numeroSorte % 2 === 0) {
+            alert(`Legal! O número ${numeroSorte} é PAR.`);
+        } else {
+            alert(`Interessante! O número ${numeroSorte} é ÍMPAR.`);
+        }
+
+        // 4. Mini calculadora
+        const operacao = prompt("Deseja fazer um cálculo de simulação de pagamento?\nDigite a operação (+, -, *, /):");
+        const valor1 = parseFloat(prompt("Digite o primeiro valor:"));
+        const valor2 = parseFloat(prompt("Digite o segundo valor:"));
+        let resultado;
+
+        switch (operacao) {
+            case "+":
+                resultado = valor1 + valor2;
+                break;
+            case "-":
+                resultado = valor1 - valor2;
+                break;
+            case "*":
+                resultado = valor1 * valor2;
+                break;
+            case "/":
+                if (valor2 === 0) {
+                    alert("Erro: Divisão por zero não é permitida!");
+                    resultado = null;
+                } else {
+                    resultado = valor1 / valor2;
+                }
+                break;
+            default:
+                alert("Operação inválida!");
+                resultado = null;
+        }
+
+        if (resultado !== null) {
+            alert(`Resultado da operação ${operacao}: ${resultado}`);
+        }
+
+        // 5. Estação do ano
+        const mes = prompt("Digite o mês atual (ex: janeiro):").toLowerCase();
+        let estacao;
+
+        switch (mes) {
+            case "dezembro":
+            case "janeiro":
+            case "fevereiro":
+                estacao = "verão";
+                break;
+            case "março":
+            case "abril":
+            case "maio":
+                estacao = "outono";
+                break;
+            case "junho":
+            case "julho":
+            case "agosto":
+                estacao = "inverno";
+                break;
+            case "setembro":
+            case "outubro":
+            case "novembro":
+                estacao = "primavera";
+                break;
+            default:
+                estacao = null;
+        }
+
+        if (estacao) {
+            alert(`Estamos na estação: ${estacao.toUpperCase()}. Fique atento aos cuidados sazonais com seu pet!`);
+        } else {
+            alert("Mês inválido informado.");
+        }
+
+        // 6. Número positivo e contagem de pares
+        const idadePet = parseInt(prompt("Digite a idade do seu pet (número positivo):"));
+        if (idadePet > 0) {
+            alert(`Idade do pet: ${idadePet} anos.`);
+            let pares = [];
+            let contador = idadePet + 1;
+            while (pares.length < 5) {
+                if (contador % 2 === 0) {
+                    pares.push(contador);
+                }
+                contador++;
+            }
+            alert(`Próximos 5 números pares após ${idadePet}: ${pares.join(", ")}`);
+        } else {
+            alert("Número inválido. A idade deve ser maior que zero.");
+        }
+
+        // 7. Idade do cachorro em anos humanos
+        const idadeCao = parseInt(prompt("Qual a idade do seu cachorro?"));
+        function idadeHumana(idade) {
+            return idade * 7;
+        }
+        alert(`Seu cachorro tem aproximadamente ${idadeHumana(idadeCao)} anos em idade humana.`);
+
+        // 8. Cálculo de área
+        const forma = prompt("Vamos fazer um cálculo de área! Qual forma você quer calcular? (quadrado, triângulo, círculo)").toLowerCase();
+
+        function areaQuadrado(lado) {
+            return lado * lado;
+        }
+
+        function areaTriangulo(base, altura) {
+            return (base * altura) / 2;
+        }
+
+        function areaCirculo(raio) {
+            return Math.PI * raio * raio;
+        }
+
+        let area;
+
+        switch (forma) {
+            case "quadrado":
+                const lado = parseFloat(prompt("Digite o valor do lado do quadrado:"));
+                area = areaQuadrado(lado);
+                alert(`A área do quadrado é: ${area.toFixed(2)} m²`);
+                break;
+
+            case "triângulo":
+            case "triangulo":
+                const base = parseFloat(prompt("Digite o valor da base do triângulo:"));
+                const altura = parseFloat(prompt("Digite a altura do triângulo:"));
+                area = areaTriangulo(base, altura);
+                alert(`A área do triângulo é: ${area.toFixed(2)} m²`);
+                break;
+
+            case "círculo":
+            case "circulo":
+                const raio = parseFloat(prompt("Digite o raio do círculo:"));
+                area = areaCirculo(raio);
+                alert(`A área do círculo é: ${area.toFixed(2)} m²`);
+                break;
+
+            default:
+                alert("Forma geométrica inválida.");
+        }
+
+        // 9. Encerramento
+        alert(`Obrigado pelo seu tempo, ${nomeTutor}! A Clínica Veterinária Esperança agradece a confiança. Cuidaremos bem do seu pet! `);
+    </script>
+</body>
+</html>
